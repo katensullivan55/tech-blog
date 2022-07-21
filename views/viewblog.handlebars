@@ -1,0 +1,62 @@
+<div class="card my-3">
+  <div class="card-body bg-light text-start">
+  <h5 class="card-title">
+      <a class="text-decoration-none" data-id="{{id}}" href="/blog/{{blog.id}}">
+      <span class="text-dark">{{title}}</span>
+      </a> 
+    </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{content}}</li>
+    
+   <li class="list-group-item text-end"><span for="img" aria-label="stoploss">✍️</span> Author by: {{user.username}} post on {{format_date createdAt}}
+   {{#if canDelete}}
+   <button id="delete-blog" data-id="{{id}}"  type="button" class="btn btn-link" >Delete</button> 
+      <button id="edit-blog" data-id="{{id}}"  type="button" class="btn btn-link" ><a href ="/edit/{{id}}">Edit</a></button> {{/if}}</li>
+  </ul>
+</div>
+
+<section class="container">
+<div class="col">
+    <div class="card my-1">
+  <div class="bg-secondary text-center">
+      <h3 class="text-center text-light">Comment</h3>
+  </div>
+  <form id="comment-submit">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <textarea class="form-input w-100" style="height: 100px" type="text" id="create-comment" required=""/>
+      </textarea>
+      <div class="text-end">
+        <button class="btn btn-primary text-end" type="submit" value="Submit">Add Comment</button>
+      </div>
+      </li>
+  </ul>
+  </form>
+</div>
+  </div>
+       
+    </section>
+
+  <div class="card my-3">
+  <div class="card-body bg-light text-start">
+  <h5 class="card-title">💬 Comment</h5>
+  </div>
+  {{#each comments as |comment|}}
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{comment.comment}}</li>
+    
+   <li class="list-group-item text-end"><span for="img" aria-label="stoploss">✍️</span> comment by: {{comment.user.username}} on {{format_date createdAt}}
+
+   <button class="delete-comment btn btn-link" data-id="{{id}}"  type="button" >Delete</button> 
+      <button id="edit-comment" data-id="{{id}}"  type="button" class="btn btn-link" ><a href ="/editcomment/{{id}}">Edit</a></button> 
+
+   </li>
+  </ul>
+{{/each}}
+
+<script src="/js/comment.js"></script>
+{{#if canDelete}}
+<script src='/js/delete.js'></script>
+{{/if}}
+<script src='/js/deletecomment.js'></script>
