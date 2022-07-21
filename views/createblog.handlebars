@@ -1,0 +1,24 @@
+<section class="container">
+<div class="col">
+    <div class="card my-1">
+  <div class="card-body bg-secondary text-center">
+      <h4 class="card-title text-center text-light">Create Your <span>Blog!</span></h4>
+  </div>
+  <form id="blog-submit">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Title:
+    <input class="form-input" value="{{title}}" type="text" id="create-title" required="" style="width: 100%" />
+    </li>
+    <li class="list-group-item"> Content: 
+      <textarea class="form-input w-100" style="height: 100px" type="text" id="create-content" required=""/>
+      {{content}}</textarea>
+      </li>
+   
+   <li class="list-group-item"><button class="btn btn-primary" type="submit" value="Submit">Submit</button></li>
+  </ul>
+  </form>
+</div>
+  </div>
+       
+    </section>
+<script src='/js/create.js'></script>
