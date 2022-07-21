@@ -7,7 +7,7 @@ routes.get('/',async (req,res)=>{
   try {
     
     // Get all alerts and JOIN with user data
-    const blogData = await Blog.findAll({
+    const dataBlog = await Blog.findAll({
       order: [['updated_at', 'DESC']],
       include: [
         {
@@ -17,7 +17,7 @@ routes.get('/',async (req,res)=>{
         },
       ],
     });
-    const commentData = await Comment.findAll({
+    const dataComment = await Comment.findAll({
       include: [
        
         {
@@ -27,14 +27,14 @@ routes.get('/',async (req,res)=>{
       ]
     })
     // Serialize data so the template can read it
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    const comments = commentData.map((comment) => comment.get({ plain: true }));
+    const blogAll = dataBlog.map((blog) => blog.get({ plain: true }));
+    const commentAll = dataComment.map((comment) => comment.get({ plain: true }));
     // Pass serialized data and session flag into template
     // console.log('alerts', alerts);
     res.render('homepage', {
-      blogs,
-      comments,
-      canDeleteComment: comments.user_id === req.session.user_id,
+      blogAll,
+      commentAll,
+      canDeleteComment: commentAll.user_id === req.session.user_id,
       loggedIn: req.session.loggedIn,
       user_id: req.session.user_id,
     });
@@ -64,7 +64,7 @@ routes.get('/signup',async (req,res)=>{
 //   });
 // });
 routes.get('/edit/:id',withAuth, async (req, res) => {
-  const blogData = await Blog.findByPk(req.params.id, {
+  const dataBlog = await Blog.findByPk(req.params.id, {
     include: [
       {
         model: User,
@@ -79,8 +79,8 @@ routes.get('/edit/:id',withAuth, async (req, res) => {
       },
     ],
   });
-// console.log( blogData)
-  const blog = blogData.get({ plain: true });
+// console.log( dataBlog)
+  const blog = dataBlog.get({ plain: true });
   res.render('editblog', {
     ...blog,
     canDelete: blog.user_id === req.session.user_id,
@@ -89,7 +89,7 @@ routes.get('/edit/:id',withAuth, async (req, res) => {
 });
 
 routes.get('/editcomment/:id',withAuth, async (req, res) => {
-  const commentData = await Comment.findByPk(req.params.id, {
+  const dataComment = await Comment.findByPk(req.params.id, {
     include: [
       {
         model: User,
@@ -98,8 +98,8 @@ routes.get('/editcomment/:id',withAuth, async (req, res) => {
       
     ],
   });
-// console.log( commentData)
-  const comment = commentData.get({ plain: true });
+// console.log( dataComment)
+  const comment = dataComment.get({ plain: true });
   res.render('editcomment', {
     ...comment,
     canDeleteComment: comment.user_id === req.session.user_id,
@@ -108,7 +108,7 @@ routes.get('/editcomment/:id',withAuth, async (req, res) => {
 });
 //view alert by id routes
 routes.get('/blog/:id',withAuth, async (req, res) => {
-  const blogData = await Blog.findByPk(req.params.id, {
+  const dataBlog = await Blog.findByPk(req.params.id, {
     include: [
       {
         model: User,
@@ -124,8 +124,8 @@ routes.get('/blog/:id',withAuth, async (req, res) => {
     ],
   });
   
-// console.log( blogData)
-  const blog = blogData.get({ plain: true });
+// console.log( dataBlog)
+  const blog = dataBlog.get({ plain: true });
   res.render('viewblog', {
     ...blog,
     canDelete: blog.user_id === req.session.user_id,
@@ -135,7 +135,7 @@ routes.get('/blog/:id',withAuth, async (req, res) => {
 
 //view alert by id routes
 routes.get('/comment/:id',withAuth, async (req, res) => {
-  const commentData = await Comment.findAll({
+  const dataComment = await Comment.findAll({
     include: [
       {
         model: User,
@@ -143,10 +143,10 @@ routes.get('/comment/:id',withAuth, async (req, res) => {
       }
     ]
   })
-  const comments = commentData.map((comment) => comment.get({ plain: true }));
+  const commentAll = dataComment.map((comment) => comment.get({ plain: true }));
   res.render('viewblog', {
-    ...comments,
-    canDeleteComment: comments.user_id === req.session.user_id,
+    ...commentAll,
+    canDeleteComment: commentAll.user_id === req.session.user_id,
     loggedIn: req.session.loggedIn,
   });
 });
