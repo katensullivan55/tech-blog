@@ -1,0 +1,43 @@
+<div class="card my-3">
+  <div class="card-body bg-light text-start">
+  <h5 class="card-title">
+      <a class="text-decoration-none" data-id="{{id}}" href="/blog/{{blog.id}}">
+      <span class="text-dark">{{title}}</span>
+      </a> 
+    </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{content}}</li>
+    
+   <li class="list-group-item text-end"><span for="img" aria-label="stoploss">✍️</span> Author by: {{user.username}} post on {{format_date createdAt}}</li>
+  </ul>
+</div>
+
+
+ <hr>
+<section class="container">
+<div class="col">
+    <div class="card my-1">
+  <div class="card-body bg-light text-center">
+      <h3 class="card-title text-start">Edit the blog</h3>
+  </div>
+  <form>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Title:
+    <input class="form-input" value="{{title}}" type="text" id="edit-title" required="" style="width: 100%"/>
+    <li class="list-group-item"> Content: 
+      <textarea class="form-input w-100" style="height: 100px" type="text" id="edit-content"/>
+      {{content}}</textarea>
+      </li>
+    </li>
+    <li class="list-group-item">
+      <input id="edit-blog-submit" data-id="{{id}}" class="btn btn-primary text-end" type="submit" value="Update Blog">
+    </li>
+    
+  </ul>
+  </form>
+</div>
+  </div>
+       
+    </section>
+<script src='/js/edit.js'></script>

@@ -1,0 +1,24 @@
+<section class="container">
+<div class="col">
+    <div class="card my-1">
+  <div class="card-body bg-light text-center">
+      <h3 class="card-title text-start">Edit the comment</h3>
+  </div>
+  <form>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> comment: 
+      <textarea class="form-input w-100" style="height: 100px" type="text" id="edit-comment"/>
+      {{comment}}</textarea>
+      </li>
+    </li>
+    <li class="list-group-item">
+      <input id="edit-comment-submit" data-id="{{id}}" class="btn btn-primary text-end" type="submit" value="Update Comment">
+    </li>
+    
+  </ul>
+  </form>
+</div>
+  </div>
+       
+    </section>
+<script src='/js/editcomment.js'></script>

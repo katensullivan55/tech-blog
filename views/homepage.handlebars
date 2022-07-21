@@ -1,0 +1,23 @@
+<section class="container my-5">
+<div class="col cols-auto ">
+  {{#each blogs as |blog|}}
+  <div class="col">
+    <div class="card my-1">
+  <div class="card-body bg-secondary">
+    <h5 class="card-title">
+      <a class="text-decoration-none" data-id="{{id}}" href="/blog/{{blog.id}}">
+      <span class="text-dark">{{title}}</span>
+      </a> 
+    </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{content}}</li>
+    
+   <li class="list-group-item"><span for="img" aria-label="stoploss">✍️</span> Author by: {{user.username}} post on {{format_date createdAt}}</li>
+  </ul>
+</div>
+  </div>
+
+  {{/each}}
+</div>
+</section>

@@ -1,0 +1,12 @@
+{{#if blogs}}
+  {{#each blogs as |blog|}}
+    <div class="row my-3 bg-light">
+      <div class="card bg-light" >
+        <a class="text-decoration-none text-secondary" href="/blog/{{blog.id}}">{{blog.title}}</a>
+      </div>
+    </div>
+  {{/each}}
+{{/if}}
+<div class="row text-center">
+  <a class="btn btn-secondary" href="/createblog">Create Blog</a>
+</div>
