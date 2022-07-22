@@ -1,10 +1,10 @@
 //get all form data through submission
 const titleEl = document.querySelector('#create-title');
 const contentEl = document.querySelector('#create-content');
-const createBlogSubmit = document.querySelector('#blog-submit')
+const blogCreateSubmit = document.querySelector('#blog-submit')
 
 //function for submission 
-const createBlog = async (e) =>{
+const blogCreate = async (e) =>{
     e.preventDefault();
     const blogBody = {
         title: titleEl.value.trim(),
@@ -33,4 +33,4 @@ const createBlog = async (e) =>{
 }
 
 //on submit button being clicked then add the details.
-createBlogSubmit.addEventListener('submit', createBlog);
+blogCreateSubmit.addEventListener('submit', blogCreate);

@@ -3,7 +3,7 @@ const commentSubmit = document.querySelector('#comment-submit')
 
 
 //function for submission 
-const addComment = async (e) => {
+const commentAdd = async (e) => {
     e.preventDefault();
         const blog_id = window.location.toString().split('/')[
             window.location.toString().split('/').length - 1
@@ -39,6 +39,6 @@ const addComment = async (e) => {
         alert(fetchNewEvent.statusText);
     }
 }
-// addComment()
+// commentAdd()
 //on submit button being clicked then add the details.
-commentSubmit.addEventListener('submit', addComment);
+commentSubmit.addEventListener('submit', commentAdd);

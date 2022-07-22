@@ -1,7 +1,7 @@
-const editCommentButton = document.querySelector('#edit-comment-submit')
+const commentEditButton = document.querySelector('#edit-comment-submit')
 const commentEl = document.querySelector('#edit-comment')
   
-  const editComment = async (e) => {
+  const commentEdit = async (e) => {
     e.preventDefault();
     if (e.target.hasAttribute('data-id')) {
       const id = e.target.getAttribute('data-id');
@@ -21,5 +21,5 @@ const commentEl = document.querySelector('#edit-comment')
     }
   };
 
-  editCommentButton.addEventListener('click', editComment);
+  commentEditButton.addEventListener('click', commentEdit);
 
